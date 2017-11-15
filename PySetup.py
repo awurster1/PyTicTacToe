@@ -3,10 +3,9 @@
 #    This is free software, and you are welcome to redistribute it
 #    under certain conditions as stated in the creative commons copyleft license;
 
-#Note: The developer of Py Tic Tac Toe is not associated with Monopoly, colorama or the developers of Creative Commons.
-#import colorama as color
+#Note: The developer of Py Tic Tac Toe is not associated with Tic Tac Toe, random or the developers of Creative Commons.
 import random
-
+board = []
 def drawBoard(board):
     #prints out Tic Tac Toe board
     print('   |   |')
@@ -20,7 +19,7 @@ def drawBoard(board):
     print('   |   |')
     print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
     print('   |   |')
-    
+#drawBoard(board)   
 def inputPlayerLetter():
     letter = ''
     while not (letter == 'X' or letter == 'O'):
@@ -111,12 +110,11 @@ def isBoardFull(board):
     return True
 
 print('Welcome to Tic Tac Toe!')
-
+turn = ' '
 while True:
     theBoard = [' '] * 10
     playerLetter, computerLetter = inputPlayerLetter()
-    turn = whoGoesFirst()
-    print('The ' + turn + ' will go first.')
+    print('The ' + whoGoesFirst() + ' will go first.')
     gameIsPlaying = True
 
     while gameIsPlaying:
