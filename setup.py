@@ -5,9 +5,9 @@
 
 #Note: The developer of Py Tic Tac Toe is not associated with Tic Tac Toe, random or the developers of Creative Commons.
 import random
-import players as player
-import AI
-
+from players import inputPlayerLetter
+from players import getPlayerMove
+from AI import getComputerMove
 board = []
 def drawBoard(board):
     #prints out Tic Tac Toe board
@@ -30,7 +30,11 @@ def whoGoesFirst():
         return 'computer'
     else:
         return 'player'
-    
+
+def playAgain():
+    print('Do you want to play again? (yes or no)')
+    return input().lower().startswith('y')
+
 def makeMove(board, letter, move):
     board[move] = letter
 
@@ -54,17 +58,33 @@ def getBoardCopy(board):
 def isSpaceFree(board, move):
     return board[move] == ' '
 
+
+
+def chooseRandomMoveFromList(board, movesList):
+    possibleMoves = []
+    for i in movesList:
+        if isSpaceFree(board, i):
+            possibleMoves.append(i)
+
+    if len(possibleMoves) != 0:
+        return random.choice(possibleMoves)
+    else:
+        return None
+
 def isBoardFull(board):
     for i in range(1, 10):
         if isSpaceFree(board, i):
             return False
     return True
 
+	
+	
+#main game starts here and loops
 print('Welcome to Tic Tac Toe!')
 turn = ' '
 while True:
     theBoard = [' '] * 10
-    playerLetter, computerLetter = player.inputPlayerLetter()
+    playerLetter, computerLetter = inputPlayerLetter()
     print('The ' + whoGoesFirst() + ' will go first.')
     gameIsPlaying = True
 

@@ -1,12 +1,16 @@
-import setup as gameboard
-
 def getComputerMove(board, computerLetter):
     if computerLetter == 'X':
         playerLetter = 'O'
     else:
         playerLetter = 'X'
-        
+
     for i in range(1,10):
+        from setup import getBoardCopy
+        from setup import isSpaceFree
+        from setup import getBoardCopy
+        from setup import makeMove
+        from setup import isWinner
+        from setup import chooseRandomMoveFromList
         copy = getBoardCopy(board)
         if isSpaceFree(copy, i):
             makeMove(copy, playerLetter, i)
